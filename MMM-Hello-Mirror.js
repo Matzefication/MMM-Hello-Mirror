@@ -29,7 +29,7 @@ Module.register("MMM-Hello-Mirror",{
 	// Define additional styles
 	getStyles: function() {
 		return [
-			this.file('style.css')
+			this.file('css/MMM-Hello-Mirror.css')
 		];
 	},
 	
