@@ -23,8 +23,8 @@ Module.register("MMM-Hello-Mirror",{
 			
 			// Define the commands
 			var commands = {
-				'hey (magic) mirror *command': function() {
-      					
+				'hey (magic) mirror *command': function(command) {
+      					this.sendNotification('VOICE_COMMAND', command);
     				}
 			};
 			
