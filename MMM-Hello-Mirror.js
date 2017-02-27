@@ -43,7 +43,10 @@ Module.register("MMM-Hello-Mirror",{
 			});
 			annyang.addCallback('errorPermissionDenied', function() {
 		    		logError('The user blocks the permission request to use Speech Recognition');
-			});			
+			});
+			annyang.addCallback('resultNoMatch', function(phrases) {
+				logError('No match for voice command');
+			});
 
 			// Start listening
 			annyang.start();
