@@ -1,4 +1,9 @@
-/* global Module */
+/* Magic Mirror
+ * Module: MMM-Hello-Mirror
+ * 
+ * By Mathias Kaniut
+ * MIT Licensed
+ */
 
 Module.register("MMM-Hello-Mirror", {
 	
