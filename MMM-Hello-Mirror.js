@@ -15,13 +15,42 @@ Module.register("MMM-Hello-Mirror",{
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
 		if (annyang) {
+			// Set language for date object
+			moment.locale(config.language);
+			
+			// Set the language of annyang
+			annyang.setLanguage(config.language);
+			
+			// Define the commands
 			var commands = {
-				'say hello (to my little) friend': greeting
+				'hey (magic) mirror *command': function() {
+      					
+    				}
 			};
+			
+			// Add the commands to annyang
+  			annyang.addCommands(commands);
+			
+			// Add callback functions for errors
+			annyang.addCallback('error', function() {
+				logError('Speech Recognition fails because of a network error');
+			});
+			annyang.addCallback('errorNetwork', function() {
+		    		logError('Speech Recognition fails because of a network error');
+			});
+			annyang.addCallback('errorPermissionBlocked', function() {
+		    		logError('Browser blocks the permission request to use Speech Recognition');
+			});
+			annyang.addCallback('errorPermissionDenied', function() {
+		    		logError('The user blocks the permission request to use Speech Recognition');
+			});			
 
+			// Start listening
+			annyang.start();
+			
 			Log.log(this.name + ' is started!');
 		} else {
-			Log.error('ERROR in module ' + this.name + ': Google Speech Recognizer is down :(');
+			logError('Google Speech Recognizer is down :(');
 		}
 	},	
 
@@ -54,5 +83,9 @@ Module.register("MMM-Hello-Mirror",{
 		wrapper.className = "small light";
         	wrapper.innerHTML = this.config.text;
         	return wrapper;
-    	}	
+    	},
+	
+	logError: function(errorText) {
+		Log.error('ERROR in module ' + this.name + ': ' + errorText);
+	}
 });
