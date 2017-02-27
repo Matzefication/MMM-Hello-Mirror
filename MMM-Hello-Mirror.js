@@ -34,11 +34,11 @@ Module.register("MMM-Hello-Mirror",{
 	},
 	
 	// Request translation files
-		getTranslations: function() {
-		    return {
-			    en: "translations/en.json",
-			    de: "translations/de.json"
-		    }
+	getTranslations: function() {
+	    	return {
+		    	en: "translations/en.json",
+		    	de: "translations/de.json"
+		}
 	},
 	
     	// Override dom generator.
