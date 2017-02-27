@@ -44,3 +44,9 @@ The following properties can be configured:
 		</tr>
 	</tbody>
 </table>
+
+## Working with voice commands
+A voice command have to start with `Hey (magic) mirror` following the command. After recognizing a command, a notification will be send with the following params:
+
+- notification identifier: `VOICE_COMMAND`
+- notification payload: `the spoken command`
