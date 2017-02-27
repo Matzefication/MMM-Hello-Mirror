@@ -8,11 +8,15 @@
 Module.register("MMM-Hello-Mirror",{
 	// Default module config.
     	defaults: {
-        	language: "de"
+        	language: "de",
+		voice: "Deutsch Female"
     	},
 
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
+		if (responsiveVoice) {
+			responsiveVoice.setDefaultVoice(config.voice);
+		}
 		if (annyang) {
 			// Set language for date object
 			moment.locale(config.language);
@@ -25,6 +29,9 @@ Module.register("MMM-Hello-Mirror",{
 				'hey (magic) mirror *command': function(command) {
 					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
       					this.sendNotification('VOICE_COMMAND', command);
+					if (responsiveVoice) {
+						responsiveVoice.speak(this.translate("VOICE_ACCEPTED"));
+					}
     				}
 			};
 			
@@ -61,6 +68,7 @@ Module.register("MMM-Hello-Mirror",{
 	getScripts: function() {
 		return [
 			'//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js',  // annyang! SpeechRecognition
+			'http://code.responsivevoice.org/responsivevoice.js', // ResponsiveVoice
 			'moment.js' // Parse, validate, manipulate, and display dates in JavaScript
 		]
 	},
