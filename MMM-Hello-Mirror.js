@@ -14,8 +14,15 @@ Module.register("MMM-Hello-Mirror",{
 
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
-		this.mySpecialProperty = "So much wow!";
-		Log.log(this.name + ' is started!');
+		if (annyang) {
+			var commands = {
+				'say hello (to my little) friend': greeting
+			};
+
+			Log.log(this.name + ' is started!');
+		} else {
+			Log.error('ERROR in module ' + this.name + ': Google Speech Recognizer is down :(');
+		}
 	},	
 
 	// Load required additional scripts
@@ -44,6 +51,7 @@ Module.register("MMM-Hello-Mirror",{
     	// Override dom generator.
     	getDom: function() {
         	var wrapper = document.createElement("div");
+		wrapper.className = "small light";
         	wrapper.innerHTML = this.config.text;
         	return wrapper;
     	}	
