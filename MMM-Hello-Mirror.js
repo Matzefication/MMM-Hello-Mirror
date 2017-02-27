@@ -68,6 +68,7 @@ Module.register("MMM-Hello-Mirror",{
 	// Define additional styles
 	getStyles: function() {
 		return [
+			"font-awesome.css",
 			this.file('css/MMM-Hello-Mirror.css')
 		];
 	},
