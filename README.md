@@ -42,6 +42,17 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>de</code>
 			</td>
 		</tr>
+		<tr>
+			<td><code>voice</code></td>
+			<td>The voice used.<br>
+				<br><b>Valid values:</b> 
+				<br><code>UK English Female</code>
+				<br><code>UK English Male</code>
+				<br><code>US English Female</code>
+				<br><code>Deutsch Female</code>
+				<br><b>Default value:</b> <code>Deutsch Female</code>
+			</td>
+		</tr>		
 	</tbody>
 </table>
 
