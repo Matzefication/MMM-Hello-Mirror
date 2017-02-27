@@ -40,7 +40,7 @@ Module.register("MMM-Hello-Mirror",{
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
-				Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because of a network error');
+				Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because an undefined error occured');
 			});
 			annyang.addCallback('errorNetwork', function() {
 		    		Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because of a network error');
