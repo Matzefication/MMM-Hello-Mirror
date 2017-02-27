@@ -97,7 +97,7 @@ Module.register("MMM-Hello-Mirror",{
         	return wrapper;
     	},
 	
-	logError: function(errorText) {
+	this.logError: function(errorText) {
 		Log.error('ERROR in module ' + this.name + ': ' + errorText);
 	}
 });
