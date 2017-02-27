@@ -8,8 +8,7 @@
 Module.register("MMM-Hello-Mirror",{
 	// Default module config.
     	defaults: {
-        	language: "de",
-		text: "Hello World!"
+        	language: "de"
     	},
 
 	// Called when all modules are loaded an the system is ready to boot up
@@ -24,6 +23,7 @@ Module.register("MMM-Hello-Mirror",{
 			// Define the commands
 			var commands = {
 				'hey (magic) mirror *command': function(command) {
+					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
       					this.sendNotification('VOICE_COMMAND', command);
     				}
 			};
