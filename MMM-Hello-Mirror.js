@@ -35,7 +35,7 @@ Module.register("MMM-Hello-Mirror",{
 				'Hallo (magischer) Spiegel *command': function(command) {
 					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
 					if (this.config.broadcastEvents) {
-      						this.sendNotification('VOICE_COMMAND', command);
+						this.sendNotification("VOICE_COMMAND", command);
 					}
 					if (responsiveVoice) {
 						responsiveVoice.speak(this.translate("VOICE_ACCEPTED"));
