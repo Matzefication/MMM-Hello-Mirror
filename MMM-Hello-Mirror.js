@@ -11,12 +11,15 @@ Module.register("MMM-Hello-Mirror",{
         	language: "de",
 		voice: "Deutsch Female",
 		wakeUp: "Hallo (magischer) Spiegel",
+		animationSpeed: 2000,
 		debug: true,
 		broadcastEvents: true
     	},
 
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
+		this.textMessage = "";
+		
 		if (responsiveVoice) {
 			responsiveVoice.setDefaultVoice(this.config.voice);
 		}
@@ -38,7 +41,7 @@ Module.register("MMM-Hello-Mirror",{
 						this.sendNotification("VOICE_COMMAND", command);
 					}
 					if (responsiveVoice) {
-						responsiveVoice.speak( this.translate("VOICE_ACCEPTED") );
+						responsiveVoice.speak( "Ich konnte dich verstehen" );
 					}
     				}
 			};
@@ -61,6 +64,14 @@ Module.register("MMM-Hello-Mirror",{
 			});
 			annyang.addCallback('resultNoMatch', function(phrases) {
 				Log.error('ERROR in module ' + this.name + ': ' + 'No match for voice command ' + phrases);
+			});
+			annyang.addCallback('soundstart', function() {
+				this.textMessage = this.translate("HEAR_YOU");
+  				this.updateDom(this.config.animationSpeed);
+			});
+			annyang.addCallback('result', function() {
+				this.textMessage = "";
+  				this.updateDom(this.config.animationSpeed);
 			});
 
 			// Start listening
@@ -101,7 +112,7 @@ Module.register("MMM-Hello-Mirror",{
     	getDom: function() {
         	var wrapper = document.createElement("div");
 		wrapper.className = "small light";
-        	wrapper.innerHTML = 'Hello U';
+        	wrapper.innerHTML = this.textMessage;
         	return wrapper;
     	}
 });
