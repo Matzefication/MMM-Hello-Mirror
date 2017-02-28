@@ -37,19 +37,25 @@ The following properties can be configured:
 	<tbody>
 		<tr>
 			<td><code>language</code></td>
-			<td>The language used.<br>
+			<td>
+				The language used.
+				<br>
 				<br><b>Example:</b> <code>en</code>
+				<br>
 				<br><b>Default value:</b> <code>de</code>
 			</td>
 		</tr>
 		<tr>
 			<td><code>voice</code></td>
-			<td>The voice used.<br>
+			<td>
+				The voice used.
+				<br>
 				<br><b>Valid values:</b> 
 				<br><code>UK English Female</code>
 				<br><code>UK English Male</code>
 				<br><code>US English Female</code>
 				<br><code>Deutsch Female</code>
+				<br>
 				<br><b>Default value:</b> <code>Deutsch Female</code>
 			</td>
 		</tr>		
@@ -57,7 +63,7 @@ The following properties can be configured:
 </table>
 
 ## Working with voice commands
-A voice command have to start with `Hey (magic) mirror` following your individual command. After recognizing a command, a notification will be send with the following params:
+A voice command has to start with `Hey (magic) mirror` following your individual command. After recognizing a command, a notification will be send with the following params:
 
 - notification identifier: `VOICE_COMMAND`
 - notification payload: `the spoken command` (without "Hey (magic) mirror")
