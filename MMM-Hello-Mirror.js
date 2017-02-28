@@ -7,14 +7,14 @@
 
 Module.register("MMM-Hello-Mirror",{
 	// Default module config.
-    	defaults: {
-        	language: "de",
-		voice: "Deutsch Female",
-		wakeUp: "Hallo (magischer) Spiegel",
-		animationSpeed: 2000,
-		debug: true,
-		broadcastEvents: true
-    	},
+    defaults: {
+        language: "de",
+        voice: "Deutsch Female",
+        wakeUp: "Hallo (magischer) Spiegel",
+        animationSpeed: 2000,
+        debug: true,
+        broadcastEvents: true
+    },
 
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
