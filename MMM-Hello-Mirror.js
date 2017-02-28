@@ -48,19 +48,19 @@ Module.register("MMM-Hello-Mirror",{
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
-				this.logError('Speech Recognition fails because an undefined error occured');
+				Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because an undefined error occured');
 			});
 			annyang.addCallback('errorNetwork', function() {
-		    		this.logError('Speech Recognition fails because of a network error');
+		    		Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because of a network error');
 			});
 			annyang.addCallback('errorPermissionBlocked', function() {
-		    		this.logError('Browser blocks the permission request to use Speech Recognition');
+		    		Log.error('ERROR in module ' + this.name + ': ' + 'Browser blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('errorPermissionDenied', function() {
-		    		this.logError('The user blocks the permission request to use Speech Recognition');
+		    		Log.error('ERROR in module ' + this.name + ': ' + 'The user blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('resultNoMatch', function(phrases) {
-				this.logError('No match for voice command ' + phrases);
+				Log.error('ERROR in module ' + this.name + ': ' + 'No match for voice command ' + phrases);
 			});
 
 			// Start listening
@@ -68,7 +68,7 @@ Module.register("MMM-Hello-Mirror",{
 			
 			Log.log(this.name + ' is started!');
 		} else {
-			this.logError('Google Speech Recognizer is down :(');
+			Log.error('ERROR in module ' + this.name + ': ' + 'Google Speech Recognizer is down :(');
 		}
 	},	
 
@@ -103,9 +103,5 @@ Module.register("MMM-Hello-Mirror",{
 		wrapper.className = "small light";
         	wrapper.innerHTML = 'Hello U';
         	return wrapper;
-    	},
-	
-	logError: function(errorText) {
-		Log.error('ERROR in module ' + this.name + ': ' + errorText);
-	}
+    	}
 });
