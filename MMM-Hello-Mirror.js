@@ -9,7 +9,9 @@ Module.register("MMM-Hello-Mirror",{
 	// Default module config.
     	defaults: {
         	language: "de",
-		voice: "Deutsch Female"
+		voice: "Deutsch Female",
+		wakeUp: "Hallo (magischer) Spiegel",
+		debug: true
     	},
 
 	// Called when all modules are loaded an the system is ready to boot up
@@ -21,12 +23,15 @@ Module.register("MMM-Hello-Mirror",{
 			// Set language for date object
 			moment.locale(config.language);
 			
+			// Set the debug mode
+			annyang.debug(config.debug);
+			
 			// Set the language of annyang
 			annyang.setLanguage(config.language);
 			
 			// Define the commands
 			var commands = {
-				'hey (magic) mirror *command': function(command) {
+				config.wakeUp + '*command': function(command) {
 					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
       					this.sendNotification('VOICE_COMMAND', command);
 					if (responsiveVoice) {
@@ -40,19 +45,19 @@ Module.register("MMM-Hello-Mirror",{
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
-				Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because an undefined error occured');
+				this.logError('Speech Recognition fails because an undefined error occured');
 			});
 			annyang.addCallback('errorNetwork', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because of a network error');
+		    		this.logError('Speech Recognition fails because of a network error');
 			});
 			annyang.addCallback('errorPermissionBlocked', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'Browser blocks the permission request to use Speech Recognition');
+		    		this.logError('Browser blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('errorPermissionDenied', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'The user blocks the permission request to use Speech Recognition');
+		    		this.logError('The user blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('resultNoMatch', function(phrases) {
-				Log.error('ERROR in module ' + this.name + ': ' + 'No match for voice command ' + phrases);
+				this.logError('No match for voice command ' + phrases);
 			});
 
 			// Start listening
@@ -60,7 +65,7 @@ Module.register("MMM-Hello-Mirror",{
 			
 			Log.log(this.name + ' is started!');
 		} else {
-			Log.error('ERROR in module ' + this.name + ': ' + 'Google Speech Recognizer is down :(');
+			this.logError('Google Speech Recognizer is down :(');
 		}
 	},	
 
@@ -96,4 +101,8 @@ Module.register("MMM-Hello-Mirror",{
         	wrapper.innerHTML = this.config.text;
         	return wrapper;
     	}
+	
+	var logError = function(errorText) {
+		Log.error('ERROR in module ' + this.name + ': ' + errorText);
+	}
 });
