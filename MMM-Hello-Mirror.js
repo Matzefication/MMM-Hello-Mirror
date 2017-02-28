@@ -11,29 +11,32 @@ Module.register("MMM-Hello-Mirror",{
         	language: "de",
 		voice: "Deutsch Female",
 		wakeUp: "Hallo (magischer) Spiegel",
-		debug: true
+		debug: true,
+		broadcastEvents: true
     	},
 
 	// Called when all modules are loaded an the system is ready to boot up
 	start: function() {
 		if (responsiveVoice) {
-			responsiveVoice.setDefaultVoice(config.voice);
+			responsiveVoice.setDefaultVoice(this.config.voice);
 		}
 		if (annyang) {
 			// Set language for date object
-			moment.locale(config.language);
+			moment.locale(this.config.language);
 			
 			// Set the debug mode
-			annyang.debug(config.debug);
+			annyang.debug(this.config.debug);
 			
 			// Set the language of annyang
-			annyang.setLanguage(config.language);
+			annyang.setLanguage(this.config.language);
 			
 			// Define the commands
 			var commands = {
 				'Hallo (magischer) Spiegel *command': function(command) {
 					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
-      					this.sendNotification('VOICE_COMMAND', command);
+					if (this.config.broadcastEvents) {
+      						this.sendNotification('VOICE_COMMAND', command);
+					}
 					if (responsiveVoice) {
 						responsiveVoice.speak(this.translate("VOICE_ACCEPTED"));
 					}
@@ -98,11 +101,11 @@ Module.register("MMM-Hello-Mirror",{
     	getDom: function() {
         	var wrapper = document.createElement("div");
 		wrapper.className = "small light";
-        	wrapper.innerHTML = this.config.text;
+        	wrapper.innerHTML = 'Hello U';
         	return wrapper;
-    	}
+    	},
 	
-	var logError = function(errorText) {
+	logError: function(errorText) {
 		Log.error('ERROR in module ' + this.name + ': ' + errorText);
 	}
 });
