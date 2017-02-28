@@ -38,7 +38,7 @@ Module.register("MMM-Hello-Mirror",{
 						this.sendNotification("VOICE_COMMAND", command);
 					}
 					if (responsiveVoice) {
-						responsiveVoice.speak(this.translate("VOICE_ACCEPTED"));
+						responsiveVoice.speak( this.translate("VOICE_ACCEPTED") );
 					}
     				}
 			};
