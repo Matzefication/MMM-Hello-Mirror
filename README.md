@@ -40,7 +40,9 @@ The following properties can be configured:
 			<td>
 				The language used.
 				<br>
-				<br><b>Example:</b> <code>en</code>
+				<br><b>Valid values:</b> 
+				<br><code>en</code>
+				<br><code>de</code>
 				<br>
 				<br><b>Default value:</b> <code>de</code>
 			</td>
