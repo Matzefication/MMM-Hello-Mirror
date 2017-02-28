@@ -78,7 +78,7 @@ Module.register("MMM-Hello-Mirror",{
 			'//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js',  // annyang! SpeechRecognition
 			'http://code.responsivevoice.org/responsivevoice.js', // ResponsiveVoice
 			'moment.js' // Parse, validate, manipulate, and display dates in JavaScript
-		]
+		];
 	},
 	
 	// Define additional styles
@@ -94,7 +94,7 @@ Module.register("MMM-Hello-Mirror",{
 	    	return {
 		    	en: "translations/en.json",
 		    	de: "translations/de.json"
-		}
+		};
 	},
 	
     	// Override dom generator.
