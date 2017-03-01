@@ -98,11 +98,11 @@ Module.register("MMM-Hello-Mirror", {
 			});
 			annyang.addCallback('soundstart', function() {
 				this.textMessage = self.translate("HEAR_YOU");
-  				this.updateDom(this.config.animationSpeed);
+  				this.updateDom(self.config.animationSpeed);
 			});
 			annyang.addCallback('result', function() {
 				this.textMessage = "";
-  				this.updateDom(this.config.animationSpeed);
+  				this.updateDom(self.config.animationSpeed);
 			});
 
 			// Start listening
