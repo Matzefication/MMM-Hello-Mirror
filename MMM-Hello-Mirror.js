@@ -66,9 +66,8 @@ Module.register("MMM-Hello-Mirror", {
 			annyang.setLanguage(this.config.language);
 			
 			// Define the commands
-            var sentence = self.config.wakeUp + ' *command';
 			var commands = {
-				sentence: function(command) {
+				'Hallo (magischer) Spiegel *command': function(command) {
 					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
 					if (self.config.broadcastEvents) {
 						self.sendNotification("VOICE_COMMAND", command);
@@ -81,6 +80,8 @@ Module.register("MMM-Hello-Mirror", {
 			
 			// Add the commands to annyang
   			annyang.addCommands(commands);
+
+            annyang.addCommandsWithDynamicText(testCommand);
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
