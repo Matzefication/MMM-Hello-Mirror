@@ -64,7 +64,7 @@ The following properties can be configured:
 		<tr>
 			<td><code>wakeUp</code></td>
 			<td>
-				Sentence to wake up the voice control.
+				Sentence to wake up the voice control. The sentence has to be in the selected language (default german)
 				<br>
 				<br><b>Default value:</b> <code>Hallo (magischer) Spiegel</code>
 			</td>
