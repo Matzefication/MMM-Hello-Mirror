@@ -66,7 +66,8 @@ Module.register("MMM-Hello-Mirror", {
 			
 			// Define the commands
 			var commands = {
-				self.config.wakeUp + ' *command': function(command) {
+                var sentence = self.config.wakeUp + ' *command';
+				sentence: function(command) {
 					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
 					if (self.config.broadcastEvents) {
 						self.sendNotification("VOICE_COMMAND", command);
