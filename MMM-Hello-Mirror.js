@@ -51,6 +51,10 @@ Module.register("MMM-Hello-Mirror", {
 		}
 
 		if (annyang) {
+            Log.info("Starting module: " + this.name);
+
+            var self = this;
+
 			// Set language for date object
 			moment.locale(this.config.language);
 			
@@ -93,7 +97,7 @@ Module.register("MMM-Hello-Mirror", {
 				Log.error('ERROR in module ' + this.name + ': ' + 'No match for voice command ' + phrases);
 			});
 			annyang.addCallback('soundstart', function() {
-				this.textMessage = this.translate("HEAR_YOU");
+				this.textMessage = self.translate("HEAR_YOU");
   				this.updateDom(this.config.animationSpeed);
 			});
 			annyang.addCallback('result', function() {
@@ -103,8 +107,6 @@ Module.register("MMM-Hello-Mirror", {
 
 			// Start listening
 			annyang.start();
-			
-			Log.log(this.name + ' is started!');
 		} else {
 			Log.error('ERROR in module ' + this.name + ': ' + 'Google Speech Recognizer is down :(');
 		}
