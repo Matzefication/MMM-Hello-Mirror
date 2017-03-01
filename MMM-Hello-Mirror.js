@@ -81,7 +81,7 @@ Module.register("MMM-Hello-Mirror", {
 			// Add the commands to annyang
   			annyang.addCommands(commands);
 
-            annyang.addCommandsWithDynamicText(testCommand);
+            //annyang.addCommandsWithDynamicText(testCommand);
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
