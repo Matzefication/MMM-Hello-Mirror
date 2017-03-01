@@ -67,12 +67,12 @@ Module.register("MMM-Hello-Mirror", {
 			// Define the commands
 			var commands = {
 				'Hallo (magischer) Spiegel *command': function(command) {
-					Log.info('Voice command recognized in module ' + this.name + ': ' + command);
-					if (this.config.broadcastEvents) {
-						this.sendNotification("VOICE_COMMAND", command);
+					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
+					if (self.config.broadcastEvents) {
+						self.sendNotification("VOICE_COMMAND", command);
 					}
 					if (responsiveVoice) {
-						responsiveVoice.speak( "Ich konnte dich verstehen" );
+						responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
 					}
                 }
 			};
@@ -82,33 +82,33 @@ Module.register("MMM-Hello-Mirror", {
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
-				Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because an undefined error occured');
+				Log.error('ERROR in module ' + self.name + ': ' + 'Speech Recognition fails because an undefined error occured');
 			});
 			annyang.addCallback('errorNetwork', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'Speech Recognition fails because of a network error');
+		    		Log.error('ERROR in module ' + self.name + ': ' + 'Speech Recognition fails because of a network error');
 			});
 			annyang.addCallback('errorPermissionBlocked', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'Browser blocks the permission request to use Speech Recognition');
+		    		Log.error('ERROR in module ' + self.name + ': ' + 'Browser blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('errorPermissionDenied', function() {
-		    		Log.error('ERROR in module ' + this.name + ': ' + 'The user blocks the permission request to use Speech Recognition');
+		    		Log.error('ERROR in module ' + self.name + ': ' + 'The user blocks the permission request to use Speech Recognition');
 			});
 			annyang.addCallback('resultNoMatch', function(phrases) {
-				Log.error('ERROR in module ' + this.name + ': ' + 'No match for voice command ' + phrases);
+				Log.error('ERROR in module ' + self.name + ': ' + 'No match for voice command ' + phrases);
 			});
 			annyang.addCallback('soundstart', function() {
-				this.textMessage = self.translate("HEAR_YOU");
-  				this.updateDom(self.config.animationSpeed);
+				self.textMessage = self.translate("HEAR_YOU");
+  				self.updateDom(self.config.animationSpeed);
 			});
 			annyang.addCallback('result', function() {
-				this.textMessage = "";
-  				this.updateDom(self.config.animationSpeed);
+				self.textMessage = "";
+  				self.updateDom(self.config.animationSpeed);
 			});
 
 			// Start listening
 			annyang.start();
 		} else {
-			Log.error('ERROR in module ' + this.name + ': ' + 'Google Speech Recognizer is down :(');
+			Log.error('ERROR in module ' + self.name + ': ' + 'Google Speech Recognizer is down :(');
 		}
 	},
 	
