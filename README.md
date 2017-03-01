@@ -1,5 +1,5 @@
 # MMM-Hello-Mirror
-Voice-Control for the MagicMirror based in Google Speech Recognizer (annyang)
+Voice-Control for the MagicMirror based on Google Speech Recognizer (annyang)
 
 This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror) to send notifications to other modules on voice commands.
 
@@ -16,7 +16,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 modules: [
     {
         module: 'MMM-Hello-Mirror',
-        position: 'lower_third', // If you want to see the prompt and recognised speech, omit otherwise
+        position: 'lower_third',
         config: {
             // See 'Configuration options' for more information.
         }
@@ -60,12 +60,28 @@ The following properties can be configured:
 				<br>
 				<br><b>Default value:</b> <code>Deutsch Female</code>
 			</td>
+		</tr>
+		<tr>
+			<td><code>wakeUp</code></td>
+			<td>
+				Sentence to wake up the voice control. The sentence has to be in the selected language (default german)
+				<br>
+				<br><b>Default value:</b> <code>Hallo (magischer) Spiegel</code>
+			</td>
+		</tr>			
+		<tr>
+			<td><code>animationSpeed</code></td>
+			<td>
+				Time in milliseconds to show and hide messages.
+				<br>
+				<br><b>Default value:</b> <code>2000</code>
+			</td>
 		</tr>		
 	</tbody>
 </table>
 
 ## Working with voice commands
-A voice command has to start with `Hey (magic) mirror` following your individual command. After recognizing a command, a notification will be send to all modules with the following params:
+A voice command has to start with the wakeUp sentence (by default `Hallo (magischer) Spiegel`) following your individual command. After recognizing a command, a notification will be send to all modules with the following params:
 
 - notification identifier: `VOICE_COMMAND`
-- notification payload: `the spoken command` (without "Hey (magic) mirror")
+- notification payload: `the spoken command` (without the wakeUp sentence)
