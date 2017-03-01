@@ -62,6 +62,14 @@ The following properties can be configured:
 			</td>
 		</tr>
 		<tr>
+			<td><code>wakeUp</code></td>
+			<td>
+				Sentence to wake up the voice control.
+				<br>
+				<br><b>Default value:</b> <code>Hallo (magischer) Spiegel</code>
+			</td>
+		</tr>			
+		<tr>
 			<td><code>animationSpeed</code></td>
 			<td>
 				Time in milliseconds to show and hide messages.
