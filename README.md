@@ -60,6 +60,14 @@ The following properties can be configured:
 				<br>
 				<br><b>Default value:</b> <code>Deutsch Female</code>
 			</td>
+		</tr>
+		<tr>
+			<td><code>animationSpeed</code></td>
+			<td>
+				Time in milliseconds to show and hide messages.
+				<br>
+				<br><b>Default value:</b> <code>2000</code>
+			</td>
 		</tr>		
 	</tbody>
 </table>
