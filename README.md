@@ -1,5 +1,5 @@
 # MMM-Hello-Mirror
-Voice-Control for the MagicMirror based in Google Speech Recognizer (annyang)
+Voice-Control for the MagicMirror based on Google Speech Recognizer (annyang)
 
 This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror) to send notifications to other modules on voice commands.
 
@@ -16,7 +16,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 modules: [
     {
         module: 'MMM-Hello-Mirror',
-        position: 'lower_third', // If you want to see the prompt and recognised speech, omit otherwise
+        position: 'lower_third',
         config: {
             // See 'Configuration options' for more information.
         }
