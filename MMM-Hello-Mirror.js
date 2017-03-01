@@ -65,8 +65,8 @@ Module.register("MMM-Hello-Mirror", {
 			annyang.setLanguage(this.config.language);
 			
 			// Define the commands
+            var sentence = self.config.wakeUp + ' *command';
 			var commands = {
-                var sentence = self.config.wakeUp + ' *command';
 				sentence: function(command) {
 					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
 					if (self.config.broadcastEvents) {
