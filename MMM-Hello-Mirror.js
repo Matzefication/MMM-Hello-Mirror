@@ -81,7 +81,20 @@ Module.register("MMM-Hello-Mirror", {
 			// Add the commands to annyang
   			annyang.addCommands(commands);
 
-            //annyang.addCommandsWithDynamicText(testCommand);
+            var testCommand = [];
+            testCommand.push({
+                phrase: self.config.wakeUp,
+                callback: function(command) {
+					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
+					if (self.config.broadcastEvents) {
+						self.sendNotification("VOICE_COMMAND", command);
+					}
+					if (responsiveVoice) {
+						responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
+					}
+                }
+            });
+            annyang.addCommandsWithDynamicText(testCommand);
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
