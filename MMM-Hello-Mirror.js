@@ -81,7 +81,7 @@ Module.register("MMM-Hello-Mirror", {
 			// Add the commands to annyang
   			annyang.addCommands(commands);
 
-            var testCommand = [];
+            /*var testCommand = [];
             testCommand.push({
                 phrase: self.config.wakeUp,
                 callback: function(command) {
@@ -94,7 +94,7 @@ Module.register("MMM-Hello-Mirror", {
 					}
                 }
             });
-            annyang.addCommandsWithDynamicText(testCommand);
+            annyang.addCommandsWithDynamicText(testCommand);*/
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
