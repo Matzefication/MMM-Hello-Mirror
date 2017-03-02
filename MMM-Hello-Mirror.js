@@ -20,8 +20,7 @@ Module.register("MMM-Hello-Mirror", {
 	// Load required additional scripts
 	getScripts: function() {
 		return [
-			//'//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js',     // annyang! SpeechRecognition
-            this.file('script/annyang.min.js'),                                  // annyang! SpeechRecognition (modified)
+			'//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js',     // annyang! SpeechRecognition
 			'http://code.responsivevoice.org/responsivevoice.js',                // ResponsiveVoice
 			'moment.js'                                                          // Parse, validate, manipulate, and display dates in JavaScript
 		];
