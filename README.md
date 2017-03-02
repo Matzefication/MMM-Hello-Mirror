@@ -60,15 +60,7 @@ The following properties can be configured:
 				<br>
 				<br><b>Default value:</b> <code>Deutsch Female</code>
 			</td>
-		</tr>
-		<tr>
-			<td><code>wakeUp</code></td>
-			<td>
-				Sentence to wake up the voice control. The sentence has to be in the selected language (default german)
-				<br>
-				<br><b>Default value:</b> <code>Hallo (magischer) Spiegel</code>
-			</td>
-		</tr>			
+		</tr>		
 		<tr>
 			<td><code>animationSpeed</code></td>
 			<td>
@@ -81,7 +73,7 @@ The following properties can be configured:
 </table>
 
 ## Working with voice commands
-A voice command has to start with the wakeUp sentence (by default `Hallo (magischer) Spiegel`) following your individual command. After recognizing a command, a notification will be send to all modules with the following params:
+A voice command has to start with the wakeUp sentence depending on the selected language (by default `Hallo (magischer) Spiegel` for german, otherwise `Hi (magic) mirror` for all other languages) following your individual command. After recognizing a command, a notification will be send to all modules with the following params:
 
 - notification identifier: `VOICE_COMMAND`
 - notification payload: `the spoken command` (without the wakeUp sentence)
