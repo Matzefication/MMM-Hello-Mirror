@@ -65,36 +65,37 @@ Module.register("MMM-Hello-Mirror", {
 			// Set the language of annyang
 			annyang.setLanguage(this.config.language);
 			
-			// Define the commands
-			var commands = {
-				'Hallo (magischer) Spiegel *command': function(command) {
-					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
-					if (self.config.broadcastEvents) {
-						self.sendNotification("VOICE_COMMAND", command);
-					}
-					if (responsiveVoice) {
-						responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
-					}
-                }
-			};
-			
+			// Define the commands ...
+            // ... for german language
+            if (self.config.language == 'de') {
+                var commands = {
+                    'Hallo (magischer) Spiegel *command': function(command) {
+                        Log.info('Voice command recognized in module ' + self.name + ': ' + command);
+                        if (self.config.broadcastEvents) {
+                            self.sendNotification("VOICE_COMMAND", command);
+                        }
+                        if (responsiveVoice) {
+                            responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
+                        }
+                    }
+                };
+            // ... for other languages (should be english)
+            } else {
+                var commands = {
+                    'Hi (magic) mirror *command': function(command) {
+                        Log.info('Voice command recognized in module ' + self.name + ': ' + command);
+                        if (self.config.broadcastEvents) {
+                            self.sendNotification("VOICE_COMMAND", command);
+                        }
+                        if (responsiveVoice) {
+                            responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
+                        }
+                    }
+                };
+            }
+
 			// Add the commands to annyang
   			annyang.addCommands(commands);
-
-            /*var testCommand = [];
-            testCommand.push({
-                phrase: self.config.wakeUp,
-                callback: function(command) {
-					Log.info('Voice command recognized in module ' + self.name + ': ' + command);
-					if (self.config.broadcastEvents) {
-						self.sendNotification("VOICE_COMMAND", command);
-					}
-					if (responsiveVoice) {
-						responsiveVoice.speak( self.translate("VOICE_ACCEPTED") );
-					}
-                }
-            });
-            annyang.addCommandsWithDynamicText(testCommand);*/
 			
 			// Add callback functions for errors
 			annyang.addCallback('error', function() {
